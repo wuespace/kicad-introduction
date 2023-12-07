@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: kicad-introduction
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Jan
+    family-names: Wolf
+    email: jan.wolf@wuespace.de
+    affiliation: WüSpace e.V.
+    orcid: 'https://orcid.org/0000-0003-3480-8326'
+repository-code: 'https://github.com/wuespace/kicad-introduction'
+url: 'https://wuespace.de'
+abstract: Source files for the lecture "Introduction to KiCad"
+keywords:
+  - lecture
+  - kicad
+license: CC-BY-4.0
