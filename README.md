@@ -13,3 +13,6 @@ different context.
 
 This folder is for KiCAD project files that correspond to the lecture. Currently there's only the
 project `baby-steps` but more can be added for further advanced lectures.
+
+## License
+CC BY-SA 4.0
