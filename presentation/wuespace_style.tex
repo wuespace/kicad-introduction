@@ -1,0 +1,155 @@
+\usepackage{xcolor}
+%\usepackage[sfdefault,light]{FiraSans}
+%\usepackage[sfdefault]{FiraSans}
+
+\usepackage{comfortaa}
+\usepackage{roboto}
+\usepackage[T1]{fontenc}
+
+\usepackage{braket}
+\usepackage{qrcode}
+\usepackage{tabularx}
+\usepackage{siunitx}
+
+
+% adjust fonts and colors
+
+\setbeamerfont{title}{family=\comfortaa\scshape}
+\setbeamerfont{section title}{family=\comfortaa\scshape}
+\setbeamerfont{frametitle}{family=\comfortaa\scshape}
+\setbeamerfont{titlelike}{family=\comfortaa\scshape}
+\setbeamerfont{block title}{family=\comfortaa\scshape}
+\setbeamerfont{block title example}{family=\comfortaa\scshape}
+\setbeamerfont{block title alerted}{family=\comfortaa\scshape}
+\setbeamerfont{caption name}{family=\comfortaa\scshape}
+\setbeamerfont{normal text}{family=\roboto\scshape}
+
+\definecolor{wuespacepurple}{rgb}{0.2705,0.1569,0.59215}
+
+\setbeamercolor{frametitle}{fg=wuespacepurple}
+\setbeamercolor{section title}{fg=white}
+\setbeamercolor{titlelike}{fg=wuespacepurple}
+\setbeamercolor{background canvas}{bg=white}
+
+% links without color
+\hypersetup{colorlinks=false}
+
+% change style of blocks
+\metroset{block=fill}
+\setbeamercolor{block title}{fg=wuespacepurple}
+\setbeamercolor{block title alerted}{fg=myred}
+\setbeamercolor{block title example}{fg=mygreen}
+
+\setbeamercolor{progress bar}{fg=orange,bg=lightgray}
+
+% blue background in section slides
+\AtBeginSection{
+    {
+    \setbeamercolor{background canvas}{bg=wuespacepurple}
+    \frame[plain,c,noframenumbering]{
+      \sectionpage
+%      \tableofcontents[hideothersubsections,sectionstyle=hide,subsectionstyle=shaded/shaded/hide]
+    }
+  }
+}
+
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{2pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{2pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{2pt}
+\makeatother
+
+
+% itemize symbols
+\setbeamertemplate{itemize subitem}{-}
+\setbeamertemplate{itemize subsubitem}{$\cdot$}
+
+% numbered sections in table of contents
+\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+\setbeamertemplate{subsection in toc}{\hspace{1.2em}-~\inserttocsubsection\par}
+
+% adjust frame title (with page numbers and a smaller spacing to the following content)
+\defbeamertemplate*{frametitle}{wuespaceframetitle}{%
+	% Is there a more elegenat way of putting the logo at the right place, e.g., remove borders?
+	\vspace{-0.039cm}
+  \ifratio{169}{
+    \hspace{-1.112cm}
+    \parbox{1.24cm}{
+      \includegraphics[width=1.24cm,keepaspectratio]{wuespace-small.png}
+    }
+  }{
+    \hspace{-1.12cm}
+    \parbox{1.3cm}{
+      \includegraphics[width=1.2cm,keepaspectratio]{wuespace-small.png}
+    }
+  }
+  \hspace{.1cm}
+  \parbox{9.9cm}{\insertframetitle}%
+}
+
+\setbeamertemplate{frametitle}[wuespaceframetitle]
+
+\defbeamertemplate*{footline}{wuespacefootline}{
+  \ifnum \theframenumber=1
+  \else
+    \centering
+    \parbox{.97\paperwidth}{
+      \mbox{\insertshortauthor: \insertshorttitle}, \insertshortinstitute, \insertshortdate \hfill \insertframenumber}
+    \vskip.8em
+  \fi
+}
+
+\setbeamertemplate{footline}[wuespacefootline]
+
+\makeatletter
+\newcommand\ifratio[3]{%
+\ifnum#1=169%
+    \ifdim\beamer@paperwidth=16.00cm\relax%
+        \ifdim\beamer@paperheight=9.00cm\relax%
+            #2%
+        \else%
+            #3%
+        \fi%
+    \else%
+        #3%
+    \fi%
+\else%
+    \ifnum#1=43%
+        \ifdim\beamer@paperwidth=12.80cm\relax%
+            \ifdim\beamer@paperheight=9.60cm\relax%
+                #2%
+            \else%
+                #3%
+            \fi%
+        \else%
+            #3%
+        \fi%
+    \fi%
+\fi%
+}
+\makeatother
+
+% define title page
+\defbeamertemplate*{background canvas}{titlepage}
+{
+  \ifratio{169}{
+    \hspace*{0.93cm}
+  }{
+    \hspace*{0.748cm}
+  }
+  \color{wuespacepurple}\vrule width\paperwidth height\paperheight% added bg color
+}
+
+\setbeamertemplate{title page}{
+  \hspace*{.9cm}
+  \centering
+  \begin{minipage}[c][.8\paperheight]{.8\textwidth}
+    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+    \usebeamertemplate*{title separator}
+    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+  \end{minipage}
+}
